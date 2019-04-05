@@ -1,4 +1,4 @@
-package com.harshagg.pmrh.locationnotes.ui
+package com.harshagg.pmrh.locationnotes.ui.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

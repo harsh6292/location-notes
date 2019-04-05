@@ -1,11 +1,9 @@
-package com.harshagg.pmrh.locationnotes.database
+package com.harshagg.pmrh.locationnotes.data.database
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
+import androidx.lifecycle.LiveData
+import androidx.room.*
 import androidx.room.OnConflictStrategy.IGNORE
 import androidx.room.OnConflictStrategy.REPLACE
-import androidx.room.Update
 
 @Dao
 interface NotesDao {
@@ -18,4 +16,7 @@ interface NotesDao {
 
     @Update(onConflict = REPLACE)
     fun updateNote(note: NotesEntity)
+
+    @Query("SELECT * from user_notes")
+    fun getAllNotes(): LiveData<List<NotesEntity>>
 }

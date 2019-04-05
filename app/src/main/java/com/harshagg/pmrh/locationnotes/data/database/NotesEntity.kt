@@ -1,4 +1,4 @@
-package com.harshagg.pmrh.locationnotes.database
+package com.harshagg.pmrh.locationnotes.data.database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
