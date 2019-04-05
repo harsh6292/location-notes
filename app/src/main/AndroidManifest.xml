@@ -37,8 +37,14 @@
             android:value="@string/google_maps_key"/>
 
         <activity
-            android:name=".ui.activity.MapsActivity"
-            android:label="@string/title_activity_maps">
+                android:name=".ui.activity.MapsActivity"
+                android:label="@string/title_activity_maps">
+        </activity>
+
+        <activity
+                android:name=".ui.activity.NotesMainActivity"
+                android:label="@string/title_activity_notes_main">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
