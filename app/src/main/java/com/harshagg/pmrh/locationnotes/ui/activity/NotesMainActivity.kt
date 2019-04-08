@@ -1,5 +1,6 @@
 package com.harshagg.pmrh.locationnotes.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -33,6 +34,10 @@ class NotesMainActivity : AppCompatActivity() {
 
     private var mNotesActivityViewModel: NotesActivityViewModel? = null
 
+    companion object {
+        private const val REQUEST_CODE_ADD_NEW_NOTE = 1000
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notes_main)
@@ -50,5 +55,10 @@ class NotesMainActivity : AppCompatActivity() {
                 Snackbar.make(message, "No Notes found", Snackbar.LENGTH_SHORT).show()
             }
         })
+
+        notes_add_icon.setOnClickListener { view ->
+            intent = Intent(this, NotesDetailActivity::class.java)
+            startActivityForResult(intent, REQUEST_CODE_ADD_NEW_NOTE)
+        }
     }
 }
