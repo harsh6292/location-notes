@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/notes_navigation"
+            app:startDestination="@id/all_notes_fragment">
+
+    <fragment
+            android:id="@+id/all_notes_fragment"
+            android:name="com.harshagg.pmrh.locationnotes.AllNotesFragment"
+            android:label="Notes"
+            tools:layout="@layout/fragment_all_notes">
+
+        <action
+            android:id="@+id/action_allNotesFragment_to_addNewNoteFragment"
+            app:destination="@id/add_new_note_fragment"/>
+
+    </fragment>
+
+    <fragment
+            android:id="@+id/add_new_note_fragment"
+            android:name="com.harshagg.pmrh.locationnotes.AddNewNoteFragment"
+            android:label="Add a new Note"
+            tools:layout="@layout/fragment_add_new_note"/>
+
+</navigation>

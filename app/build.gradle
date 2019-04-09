@@ -6,6 +6,8 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -26,20 +28,20 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$rootProject.kotlinVersion"
+    implementation "androidx.appcompat:appcompat:$rootProject.appCompatVersion"
     implementation 'androidx.core:core-ktx:1.0.1'
     implementation 'com.google.android.gms:play-services-maps:16.0.0'
-    implementation 'com.google.android.material:material:1.0.0-beta01'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation "com.google.android.material:material:$rootProject.materialVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
 
     // Room library
-    def room_version = '2.1.0-alpha06'
-    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-runtime:$rootProject.roomVersion"
     // Kotlin version of Room Annotation Processor
-    kapt "androidx.room:room-compiler:$room_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0-beta01'
+    kapt "androidx.room:room-compiler:$rootProject.roomVersion"
     // Kotlin Extensions and Coroutines support for Room
-    implementation "androidx.room:room-ktx:$room_version"
+    implementation "androidx.room:room-ktx:$rootProject.roomVersion"
 
     testImplementation 'junit:junit:4.12'
 
@@ -47,11 +49,13 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
 
     // Room testing helper
-    testImplementation "androidx.room:room-testing:$room_version"
+    testImplementation "androidx.room:room-testing:$rootProject.roomVersion"
 
     // ViewModel and LiveData
-    def lifecycle_version = "2.0.0"
-    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
-    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycleVersion"
+    kapt "androidx.lifecycle:lifecycle-compiler:$rootProject.lifecycleVersion"
 
+    //Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navigationVersion"
 }

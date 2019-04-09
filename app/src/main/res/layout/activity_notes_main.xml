@@ -8,12 +8,29 @@
         android:layout_height="match_parent"
         tools:context=".ui.activity.NotesMainActivity">
 
-    <TextView
-            android:id="@+id/message"
-            android:layout_width="wrap_content"
+    <fragment
+            android:id="@+id/notes_nav_host_fragment"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/title_home"
-            tools:layout_editor_absoluteY="16dp" tools:layout_editor_absoluteX="16dp"/>
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/notes_navigation"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/addNoteButton"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button android:id="@+id/addNoteButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/notes_text_input_border"
+            android:layout_margin="8dp"
+            android:hint="Add a new note..."
+            android:textAlignment="viewStart"
+            android:padding="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintBottom_toTopOf="@+id/navigation" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/navigation"
@@ -26,13 +43,5 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:menu="@menu/navigation"/>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_action_note_add"
-            android:id="@+id/notes_add_icon"
-            app:layout_constraintBottom_toTopOf="@id/navigation"
-            app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
