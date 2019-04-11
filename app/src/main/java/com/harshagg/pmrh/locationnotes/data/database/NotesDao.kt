@@ -19,4 +19,7 @@ interface NotesDao {
 
     @Query("SELECT * from user_notes")
     fun getAllNotes(): LiveData<List<NotesEntity>>
+
+    @Query("SELECT * from user_notes where noteId = :inputId")
+    fun getNoteById(inputId: Int): NotesEntity
 }

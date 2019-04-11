@@ -3,6 +3,7 @@ package com.harshagg.pmrh.locationnotes.data
 import androidx.lifecycle.LiveData
 import com.harshagg.pmrh.locationnotes.data.database.NotesDao
 import com.harshagg.pmrh.locationnotes.data.database.NotesEntity
+import java.util.concurrent.Executors
 
 class NotesRepository private constructor(private val mNotesDao: NotesDao) {
 
@@ -21,7 +22,19 @@ class NotesRepository private constructor(private val mNotesDao: NotesDao) {
         }
     }
 
+    private val executor = Executors.newSingleThreadExecutor()
+
     fun getAllNotes(): LiveData<List<NotesEntity>> {
         return mNotesDao.getAllNotes()
+    }
+
+    fun insertNote(notesEntity: NotesEntity) {
+        executor.execute(Runnable {
+            mNotesDao.insertNote(notesEntity)
+        })
+    }
+
+    fun getNoteById(noteId: Int): NotesEntity {
+        return mNotesDao.getNoteById(noteId)
     }
 }
